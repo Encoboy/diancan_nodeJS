@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>上传成功</h1>
+		
+		<h3>文件名字：<%= filename%></h3>
+		<h3>文件类型<%= mimetype%></h3>
+		<h3>文件大小<%= size%></h3>
+		
+		<% if(mimetype=='image/jpeg'||mimetype=='image/png'){
+			%>
+			<img src="<%= filename%>"/>
+			<%
+		}%>
+		
+	</body>
+</html>

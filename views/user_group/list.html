@@ -1,0 +1,169 @@
+ <!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>用户组列表</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="<%=hostname%>css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="<%=hostname%>css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="<%=hostname%>css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="<%=hostname%>css/animate.css" rel="stylesheet">
+    <link href="<%=hostname%>css/style.css?v=4.1.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>用户组列表</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="table_basic.html#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="table_basic.html#">选项1</a>
+                                </li>
+                                <li><a href="table_basic.html#">选项2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                        	<div class="col-sm-3">
+                        		<a href="<%=hostname%>admin/addUserGroup" class="btn btn-primary">
+	                        		<span class="fa fa-plus"></span> 添加
+	                        	</a>
+                        	</div>
+                        	
+                            <div class="col-sm-3 col-sm-offset-6">
+                                <div class="input-group">
+                                    <input type="text" placeholder="请输入关键词" class="input-sm form-control"> <span class="input-group-btn">
+                                        <button type="button" class="btn btn-sm btn-primary"> 搜索</button> </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+
+                                        <th>ID</th>
+                                        <th>用户组名</th>
+                                        <th>权限</th>
+                                        
+                                        <th>修改</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                	
+                                	<% for(var i=0;i<listArr.length;i++){%>
+                                    <tr>
+                                        <td>
+                                            <%=listArr[i].id %>
+                                        </td>
+                                        <td><%=listArr[i].group_name %></td>
+                                        <td><%=listArr[i].auth_value %></td>
+                                       
+                                        <td><a href="<%=hostname%>admin/editUserGroup?id=<%=listArr[i].id%>"><i class="fa fa-edit text-navy"></i></a>
+                                        </td>
+                                    </tr>
+                                    
+                                    
+                                    <% }%>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                        	<div class="col-sm-6">
+                        		<div class="dataTables_info" id="DataTables_Table_0_info" role="alert" aria-live="polite" aria-relevant="all">显示 <%=pageNum+1%> 到 <%=i%> 项，共<%=allNum%>项</div>
+                        	</div>
+                        	<div class="col-sm-6">
+                        		<div class="dataTables_paginate paging_simple_numbers" id="editable_paginate">
+                        			<ul class="pagination">
+                        				
+                        				<%if(pageNum!=0){%>
+                        				<li class="paginate_button previous" aria-controls="editable" tabindex="0" id="editable_previous">
+                        					<a href="<%=hostname%>admin/userGroup?pageNum=<%=parseInt(pageNum)-1%>">上一页</a>
+                        				</li>
+                        				<% } %>
+                        				
+                        				<% for(var i=0;i<page;i++){ %>
+                        					<li class="paginate_button active" aria-controls="editable" tabindex="0">
+	                        					<a href="<%=hostname%>admin/userGroupuserGroup?pageNum=<%=i%>"><%=i+1%></a>
+	                        				</li>
+                        					
+                        					
+                        					
+                        					
+                        					
+                        				<% } %>
+                        				
+                        				
+                        				<%if(pageNum!=page){%>
+                        				<li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next">
+                        					<a href="<%=hostname%>admin/userGroup?pageNum=<%=parseInt(pageNum)+1%>">下一页</a>
+                        				</li>
+                        				<% } %>
+                        			</ul>
+                        		</div>
+                        	</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 全局js -->
+    <script src="<%=hostname%>js/jquery.min.js?v=2.1.4"></script>
+    <script src="<%=hostname%>js/bootstrap.min.js?v=3.3.6"></script>
+
+
+
+    <!-- Peity -->
+    <script src="<%=hostname%>js/plugins/peity/jquery.peity.min.js"></script>
+
+    <!-- 自定义js -->
+    <script src="<%=hostname%>js/content.js?v=1.0.0"></script>
+
+
+    <!-- iCheck -->
+    <script src="<%=hostname%>js/plugins/iCheck/icheck.min.js"></script>
+
+
+
+    <script>
+        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
+
+    
+    
+
+</body>
+
+</html>

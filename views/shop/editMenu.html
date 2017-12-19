@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>编辑菜品</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="<%=hostname%>css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="<%=hostname%>css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="<%=hostname%>css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="<%=hostname%>css/animate.css" rel="stylesheet">
+    <link href="<%=hostname%>css/style.css?v=4.1.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        
+            
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>修改菜品信息</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="form_basic.html#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="form_basic.html#">选项1</a>
+                                </li>
+                                <li><a href="form_basic.html#">选项2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <form method="post" class="form-horizontal" action="<%=hostname%>admin/editMenu?id=<%=results[0].id%>" enctype="multipart/form-data">
+                           <input type="text" name="id" id="id" value="<%=results[0].id%>" hidden="hidden" />
+                           <input type="text" name="shopId" id="" value="<%=results[0].shopId%>" hidden="hidden" />
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">菜品名称</label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" name="menuname" class="form-control" value="<%=results[0].menuname%>" >
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">菜品简介</label>
+                                <div class="col-sm-10">
+                                    <input type="text"  name="menubrief" class="form-control" value="<%=results[0].menubrief%>">
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">菜品价格</label>
+                                
+
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="menuprice" value="<%=results[0].menuprice%>">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">菜品图片</label>
+                                <div class="col-sm-10">
+                                	<img style="height: 150px; margin-bottom: 20px;" src="<%=hostname%>upload/<%=results[0].menuimg%>"/>
+                                </div>
+                               
+
+                                <div class="col-sm-10 col-sm-offset-2">
+                                    <input type="file" name="menuimg" required="required">
+                                </div>
+                            </div>
+                            
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                    <button class="btn btn-primary" type="submit">保存内容</button>
+                                    <button class="btn btn-white" type="reset">取消</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-form" class="modal fade" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-6 b-r">
+                            <h3 class="m-t-none m-b">登录</h3>
+                            <form role="form">
+                                <div class="form-group">
+                                    <label>用户名：</label>
+                                    <input type="email" placeholder="请输入用户名" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>密码：</label>
+                                    <input type="password" placeholder="请输入密码" class="form-control">
+                                </div>
+                                <div>
+                                    <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>登录</strong>
+                                    </button>
+                                    <label>
+                                        <input type="checkbox" class="i-checks">自动登录</label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-6">
+                            <h4>还不是会员？</h4>
+                            <p>您可以注册一个账户</p>
+                            <p class="text-center">
+                                <a href="form_basic.html"><i class="fa fa-sign-in big-icon"></i></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 全局js -->
+    <script src="<%=hostname%>js/jquery.min.js?v=2.1.4"></script>
+    <script src="<%=hostname%>js/bootstrap.min.js?v=3.3.6"></script>
+
+    <!-- 自定义js -->
+    <script src="<%=hostname%>js/content.js?v=1.0.0"></script>
+
+    <!-- iCheck -->
+    <script src="<%=hostname%>js/plugins/iCheck/icheck.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
+
+    
+    
+
+</body>
+
+</html>

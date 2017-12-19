@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			<% %>传入我们的数据和执行渲染逻辑
+			<% %>流程控制标签
+			<%= %>输出标签（原文输出HTML标签）
+			<%- %>输出标签（HTML会被浏览器解析）
+		-->
+		<%= title -%>
+		
+		<% include header.html %>
+		
+		
+		<% for(var i=0;i<arrList.length;i++){    -%>
+		
+		<h1><%= arrList[i] %></h1>
+		<h1><%- arrList[i] %></h1>
+		
+		<% }    %>
+		
+		
+		<%# <!--switch模式-->   %>
+		
+		<%
+			switch(switchWord){
+				case "mode1":
+				%>
+				<h1>这是模式1</h1>
+				
+				
+				-%>
+				<%
+				break;
+				case 'mode2':
+				%>
+				<h1>这是模式2</h1>
+				
+				
+				
+				
+				<%
+				break;
+				
+			}
+		%>
+		
+		
+		<%
+			if(ifMod){
+				%>
+				<h1>为真时候显示</h1>
+				<%
+			}else{
+				%>
+				<h1>为假的时候显示</h1>
+				<%
+			}
+		%>
+		
+		
+		
+		
+		<% include footer.html %>
+	</body>
+</html>
